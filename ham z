@@ -1,0 +1,78 @@
+/// Xác định đoạn từ L tới R là đoạn dài nhất bắt đầu ở L và kết thúc ở R.
+/// Với L <= i.
+/// Khởi tạo : z[0] = n ( n = s.size() ); L = R = 0;
+/// Duyệt qua từng vị trí i.
+/// Nếu i > R => i không chịu ảnh hưởng bởi đoạn L , R
+/// => Chạy for để xác định kết quả của z[i] và đồng thời cập nhật lại đoạn L , R
+/// Nếu i < R => Có 2 trường hợp
+/// Nếu z[i - L] < R - i + 1 thì có nghĩa z[i] = z[i - L]; Bởi s[0 -> R - L + 1] = s[L -> R];
+/// Ngược lại thì : chạy for để tìm z[i] và cập nhật lại đoạn L , R.
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define db double
+#define LT "hamz"
+#define maxn 1000005
+#define pb push_back
+#define For( i , a , b ) for( int i = int(a) ; i <= int(b) ; i++ )
+#define FOr( i , a , b ) for( int i = int(a) ; i >= int(b) ; i-- )
+#define fi first
+#define se second
+#define mp make_pair
+
+typedef pair<int,int> pii;
+typedef vector<int> vi;
+typedef vector<pii> vii;
+
+int i , j , n , m , k;
+
+string s;
+int z[maxn];
+
+void nhap()
+{
+    cin >> s;
+    cout << s << endl;
+    n = s.size();
+}
+
+void xuli()
+{
+    z[0] = n;
+    int L = 0 , R = 0;
+    For( i , 1 , n - 1 )
+    {
+        if( i > R )
+        {
+            L = R = i;
+            while( R < n && s[R] == s[R - L] ) R++;
+            R--;
+            z[i] = R - L + 1;
+        }
+        else
+        {
+            int k = i - L;
+            if( z[k] < R - i + 1 ) z[i] = z[k];
+            else
+            {
+                L = R = i;
+                while( R < n && s[R] == s[R - L] ) R++;
+                R--;
+                z[i] = R - L + 1;
+            }
+        }
+    }
+
+    For( i , 0 , n - 1 ) cout << z[i] << ' '; cout << endl;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    freopen(LT".inp","r",stdin);
+    freopen(LT".out","w",stdout);
+    nhap();
+    xuli();
+}
