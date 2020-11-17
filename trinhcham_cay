@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define db double
+#define pb push_back
+#define LT "water"
+#define maxn 100005
+#define fi first
+#define se second
+#define For( i , a , b ) for( int i = int(a) ; i <= int(b) ; i++ )
+#define FOr( i , a , b ) for( int i = int(a) ; i >= int(b) ; i-- )
+
+typedef pair<int,int> pii;
+typedef vector<int> vi;
+typedef vector<pii> vii;
+
+int  i , j , n , m , k;
+
+int itest , ntest = 100;
+int mod = 1e9;
+
+int nhan[maxn];
+int cha[maxn];
+
+vector<pii> st;
+
+int Rand( int l , int r )
+{
+    if( l == r ) return l;
+    int kc = r - l + 1;
+    return l + rand()%(kc);
+}
+
+int main()
+{
+    srand(time(NULL));
+    For( itest , 1 , ntest )
+    {
+        ofstream inp( LT".inp" );
+
+        int n = Rand( 2 , 100000 );
+        For( i , 1 , n ) nhan[i] = i;
+        random_shuffle( nhan + 2 , nhan + n + 1 );
+        For( i , 2 , n ) cha[i] = Rand( 1 , i - 1 );
+
+        st.clear();
+        For( i , 2 , n ) st.pb( { nhan[i] , nhan[cha[i]] } );
+
+        random_shuffle( st.begin() , st.end() );
+
+        inp << n << endl;
+        for( pii tam : st )
+            inp << tam.fi << ' ' << tam.se << endl;
+
+        inp.close();
+
+        system( LT".exe" );
+        system( LT"_trau.exe" );
+
+        if( system( "fc " LT".ans " LT".out " ) != 0 )
+        {
+            cout << "TEST  " << itest << " : FALSE\n ";
+            return 0;
+        }
+        cout << "TEST  " << itest << " : TRUE\n ";
+    }
+}
