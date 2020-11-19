@@ -1,0 +1,32 @@
+void solve(){
+    doc(n); doc(m);
+    for (int i=1;i<=m;i++){
+        int u, v;
+        doc(u); doc(v);
+        a[u].push_back({v,i});
+        a[v].push_back({u,i});
+    }
+    st[++top] = 1;
+    while(top) {
+        int u = st[top];
+        bool ok = true;
+            for (int i = a[u].size()-1;i>=0;i--){
+            pair <int , int >  v = a[u][i];
+            if(!check[v.second]) {
+                ok = false;
+                st[++top] = v.first;
+                check[v.second] = 1;
+                a[u].pop_back();
+                break;
+            }
+            a[u].pop_back();
+        }
+        if(ok) {
+            write(u);
+            printf(" ");
+            top--;
+        }
+
+    }
+
+}
