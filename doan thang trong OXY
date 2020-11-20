@@ -1,0 +1,29 @@
+1/ Cho 2 điểm A(x1 , y1) , B (x2,y2). Tìm phương trình tổng quát đường thẳng đi qua A và B (AB)
+AB = ( x2 – x1 , y2 – y1 );
+Đặt 
+-	x’ = x2 – x1 ;
+-	y’ = y2 – y1;
+Bước 1 :
+-	Vector chỉ phương của AB là : ( x’ , y’);
+-	Vector pháp tuyển của AB là : ( y’ , – x’ );
+Bước 2:
+-	Phương trình tổng quát là :  y’ * (x – x1) – x’ * (y – y1) = 0 
+-	Phương trình rút gọn là : x * y’ – y * x’ + ( x’ * y1 – x1 * y’ ) = 0
+o	a = y’
+o	b =  – x’
+o	c = x’ * y1 – x1 * y’ =  –b * y1 – x1 * a
+
+2/ Cho 2 đường thẳng A,B. Tìm tọa độ giao điểm
+-	A : a1 * x + b1 * y + c1 = 0;
+-	B : a2 * x + b2 * y  + c2 = 0;
+Cắt nhau nếu : (a1 * b2) != (a2 * b1)
+Tọa độ của giao điểm là nghiệm của hệ phương trình 2 ẩn trên.
+Ta có :
+-	a1 * b2 * x – a2 * b1 * x + c1 * b2 – c2 * b1 = 0
+-	x = ( c2 * b1 – c1 * b2 ) / ( a1 * b2 – a2 * b1 );
+-	y = – ( c1 + a1 * x ) / b1;
+
+3/ Khoảng cách từ 1 điểm đến 1 đường thẳng
+M( x0 ,y0 ) 
+A : a * x + b * y + c = 0
+D = abs( a*x0 + b*y0 + c ) / (a ^ 2 + b ^ 2);
