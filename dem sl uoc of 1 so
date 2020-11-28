@@ -1,0 +1,12 @@
+Đặt F(x) là số lượng ước của số x.
+Ta thấy rằng nếu GCD(x,y) = 1 thì f(x * y) = f(x) * f(y)
+
+Như vậy để tính được f(n) thì ta sẽ
+- Chia ra làm 2 phần n = x * y.
+- Trong đó x sẽ gồm những snt có giá trị <= n ^ (1/3)  => Ta có thể dễ dàng tính f(x)
+=> y chỉ có thể là 1 trong 3 trường hợp sau:
+ + y là 1 số nguyên tố => có 2 ước
+ + y là bình phương 1 số nguyên tố => 3 ước
+ + Tích của 2 số nguyên tố  => 4 ước
+ 
+ Giờ đây thì có thể dễ dàng tính f(n) = f(x) * f(y)
